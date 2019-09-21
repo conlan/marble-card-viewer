@@ -1,0 +1,39 @@
+.App {
+  /*text-align: center;*/
+ 
+  /*min-height: 100vh;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+}
+
+.loading-spinner {
+  width: 15px;
+}
+
+.input-div {
+	justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+input {
+	margin-left: 10px;
+  margin-right: 10px;
+}
+
+button {
+  font-size: 14px;
+}
+
+.clipboard-div {
+	justify-content: center;
+	display: flex;
+  	align-items: center;
+}
+
+.card-div {
+justify-content: center;
+	display: flex;
+  	align-items: center;	
+}
