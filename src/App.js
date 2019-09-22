@@ -27,7 +27,7 @@ class App extends Component {
 		tokens.push(cardData.level);
 		tokens.push(cardData.domain_collection.is_gold_card ? "Gold" : "")
 		tokens.push(cardData.grade == "ORIGIN" ? "Origin" : "")
-		tokens.push(cardData.card_title_multiline)
+		tokens.push("\"" + cardData.card_title_multiline + "\"")
 		tokens.push(cardData.domain_collection.domain_name)
     	app.copyToClipboard(tokens)		
 	}
@@ -35,12 +35,19 @@ class App extends Component {
 	copyToClipboard(tokens) {
 		var text = tokens.join('\t')
 
-		var textField = document.createElement('textarea')
-    	textField.innerText = text
-    	document.body.appendChild(textField)
-    	textField.select()
-    	document.execCommand('copy')
-    	textField.remove()
+	    var textArea = document.createElement('textarea')
+
+	    textArea.innerHTML = text
+
+	    var parentElement = document.getElementById('root');		
+
+	    parentElement.appendChild(textArea)
+
+    	textArea.select()
+
+	    document.execCommand('copy')
+
+	    parentElement.removeChild(textArea)
 
     	console.log("'" + text + "' copied to clipboard")
 	}
