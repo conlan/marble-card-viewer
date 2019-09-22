@@ -10,10 +10,7 @@ class InputSection extends Component {
 		app = props.app
 	}
 	updateInput(event) {
-		// this.setState({username : event.target.value})
 		app.currentCardId = event.target.value
-
-		// TODO parse out the id if we used a marble url
 	}
 
 	handleKeyDown (event) {
