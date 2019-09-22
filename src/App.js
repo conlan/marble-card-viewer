@@ -17,10 +17,12 @@ class App extends Component {
 		app = this;
 	}
 
-	componentWillMount() {
-	}
-
 	copyCardDataToClipboard() {
+		if (cardData.nft_id === undefined) {
+			console.log("No card data found.")
+			return;
+		}
+
 		var tokens = []
 		tokens.push("https://marble.cards/card/" + cardData.nft_id)
 		tokens.push(cardData.domain_collection.collection_number)
@@ -86,19 +88,21 @@ class App extends Component {
 
 		console.log("loading..." + cardIdInt)
 		
+		cardData.image = ""
 		app.isLoading = true;
-		cardData.image = ""		
-
 		app.setState({})
 
 		// create a new XMLHttpRequest
     	var xhr = new XMLHttpRequest()
 
     	// get a callback when the server responds
-	    xhr.addEventListener('load', () => {	      	
+	    xhr.addEventListener('load', () => {	    	
 	    	console.log(xhr.responseText)
-
-	    	cardData = JSON.parse(xhr.responseText)
+	    	if (xhr.responseText === "null") {
+				alert("No card found for " + cardId)
+	    	} else {
+	    		cardData = JSON.parse(xhr.responseText)
+	    	}
 
 	      	app.isLoading = false;
 			app.setState({})
@@ -113,9 +117,12 @@ class App extends Component {
 	
 	render() {
 		return (
-		    <div className="App">
+		    <div className="App">		    	
+		    	<br/>
+		    	<p>This page is for collecting card stats in use with &nbsp;<b>@Wayfinder</b>'s spreadsheet &nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.
+	        	</p>
 		    	<InputSection app={app}/>
-
+		    	<br/>
 		        <div className="clipboard-div">
 		        	<button onClick={this.copyCardDataToClipboard}>Copy details to Clipboard</button>
 		        </div>
@@ -123,7 +130,7 @@ class App extends Component {
 
 		        <div className="card-div">
 		        	<img src={cardData.image}/>
-	        	</div>
+	        	</div>	        	
 		    </div>
 		  );
 	}  

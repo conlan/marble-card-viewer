@@ -26,9 +26,8 @@ class InputSection extends Component {
 
 	render() {
 		return (
-			<div className="input-section">
-				<p>Card ID/URL:</p>
-				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown} placeholder="https://marble.cards/card/1"/>
+			<div className="input-section">				
+				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown} placeholder="Card ID or URL"/>
 				<img hidden={!app.isLoading} className="loading-spinner" src="loading.gif"/>
 			</div>		    	
 	  	);
