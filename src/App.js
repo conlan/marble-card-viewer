@@ -3,6 +3,9 @@ import './App.css';
 import InputSection from "./components/InputSection"
 
 var app = null;
+var cardData = {
+	image : ""	
+};
 
 class App extends Component {
 	constructor(props) {
@@ -17,6 +20,10 @@ class App extends Component {
 	}
 
 	componentWillMount() {
+	}
+
+	copyCardDataToClipboard() {
+		console.log("copied")
 	}
 
 	loadCurrentCard() {
@@ -49,17 +56,21 @@ class App extends Component {
 		console.log("loading..." + cardIdInt)
 		
 		app.isLoading = true;
+		cardData.image = ""		
+
 		app.setState({})
 
 		// create a new XMLHttpRequest
     	var xhr = new XMLHttpRequest()
 
     	// get a callback when the server responds
-	    xhr.addEventListener('load', () => {
+	    xhr.addEventListener('load', () => {	      	
+	    	console.log(xhr.responseText)
+
+	    	cardData = JSON.parse(xhr.responseText)
+
 	      	app.isLoading = false;
 			app.setState({})
-	      	
-	      	console.log(xhr.responseText)
 	    })
 
 	    xhr.open('POST', 'https://ws.marble.cards/task/card_index/get_card_detail_task')
@@ -75,12 +86,12 @@ class App extends Component {
 		    	<InputSection app={app}/>
 
 		        <div className="clipboard-div">
-		        	<button onClick={this.loadCurrentCard}>Copy to Clipboard</button>
+		        	<button onClick={this.copyCardDataToClipboard}>Copy to Clipboard</button>
 		        </div>
 		        <br/>
 
 		        <div className="card-div">
-		        	<img src={this.cardImageURL}/>
+		        	<img src={cardData.image}/>
 	        	</div>
 		    </div>
 		  );

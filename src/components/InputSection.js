@@ -22,7 +22,7 @@ class InputSection extends Component {
 	render() {
 		return (
 			<div className="input-section">
-				<p>Card ID:</p>
+				<p>Card ID/URL:</p>
 				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown}/>
 				<img hidden={!app.isLoading} className="loading-spinner" src="loading.gif"/>
 			</div>		    	
