@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { Component } from 'react';
 import InputSection from "./components/InputSection"
 
 var app = null;
@@ -11,8 +11,6 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 
-		this.cardTitle = "Card"
-		this.cardImageURL = "https://cdn.marble.cards/images/cards/34/34802/34802-share.png?version=2"
 		this.currentCardId = 0
 		this.isLoading = false;
 
@@ -23,10 +21,31 @@ class App extends Component {
 	}
 
 	copyCardDataToClipboard() {
-		console.log("copied")
+		var tokens = []
+		tokens.push("https://marble.cards/card/" + cardData.nft_id)
+		tokens.push(cardData.domain_collection.collection_number)
+		tokens.push(cardData.level);
+		tokens.push(cardData.domain_collection.is_gold_card ? "Gold" : "")
+		tokens.push(cardData.grade == "ORIGIN" ? "Origin" : "")
+		tokens.push(cardData.card_title_multiline)
+		tokens.push(cardData.domain_collection.domain_name)
+    	app.copyToClipboard(tokens)		
 	}
 
-	loadCurrentCard() {
+	copyToClipboard(tokens) {
+		var text = tokens.join('\t')
+
+		var textField = document.createElement('textarea')
+    	textField.innerText = text
+    	document.body.appendChild(textField)
+    	textField.select()
+    	document.execCommand('copy')
+    	textField.remove()
+
+    	console.log("'" + text + "' copied to clipboard")
+	}
+
+	loadCurrentCard() {		
 		// check if we're already loading a request
 		if (app.isLoading) {
 			console.log("app already loading, wait til previous request returns!")
@@ -52,6 +71,11 @@ class App extends Component {
 
 		// parse the id to an int
 		var cardIdInt = parseInt(cardId)
+
+		if (Number.isNaN(cardIdInt)) {
+			alert(cardId + " is an invalid card id or url. Please provide a number or url like https://marble.cards/card/1.")
+			return
+		}
 
 		console.log("loading..." + cardIdInt)
 		
@@ -86,7 +110,7 @@ class App extends Component {
 		    	<InputSection app={app}/>
 
 		        <div className="clipboard-div">
-		        	<button onClick={this.copyCardDataToClipboard}>Copy to Clipboard</button>
+		        	<button onClick={this.copyCardDataToClipboard}>Copy details to Clipboard</button>
 		        </div>
 		        <br/>
 

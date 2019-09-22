@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './InputSection.css';
 
 var app = null;
+var inputField = null;
 
 class InputSection extends Component {	
 	constructor (props) {
@@ -10,12 +11,16 @@ class InputSection extends Component {
 		app = props.app
 	}
 	updateInput(event) {
-		app.currentCardId = event.target.value
+		app.currentCardId = event.target.value;
+
+		inputField = event.target;
 	}
 
 	handleKeyDown (event) {
 		if (event.key === "Enter") {
-			app.loadCurrentCard()
+			inputField.value = "";
+
+			app.loadCurrentCard();
 		}
 	}
 
@@ -23,7 +28,7 @@ class InputSection extends Component {
 		return (
 			<div className="input-section">
 				<p>Card ID/URL:</p>
-				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown}/>
+				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown} placeholder="https://marble.cards/card/1"/>
 				<img hidden={!app.isLoading} className="loading-spinner" src="loading.gif"/>
 			</div>		    	
 	  	);
