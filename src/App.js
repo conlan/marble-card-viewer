@@ -105,15 +105,16 @@ class App extends Component {
 
     	// get a callback when the server responds
 	    xhr.addEventListener('load', () => {	    	
-	    	console.log(xhr.responseText)
+	    	// console.log(xhr.responseText)
+	    	
 	    	if (xhr.responseText === "null") {
 				alert("No card found for " + cardId)
 	    	} else {
 	    		cardData = JSON.parse(xhr.responseText)
+	    		app.showClipboardButton = true;
 	    	}
 
-	      	app.isLoading = false;
-	      	app.showClipboardButton = true;
+	      	app.isLoading = false;	      	
 			app.setState({})
 	    })
 
@@ -129,7 +130,9 @@ class App extends Component {
 		    <div className="App">		    	
 		    	<br/>
 		    	<p>Collect card stats for use with&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.</p>
-		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>	        	
+		    	<br/>
+		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>
+		    	<br/>
 		    	<InputSection app={app}/>
 		    	<br/>		        
 		        <div className="card-div">
