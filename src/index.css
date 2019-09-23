@@ -6,9 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #282c34;
-  font-size: calc(15px);
-  color: white;
+  background-color: #000000;    
 }
 
 code {

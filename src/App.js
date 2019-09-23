@@ -2,9 +2,11 @@ import './App.css';
 import React, { Component } from 'react';
 import InputSection from "./components/InputSection"
 
+const BLANK_CARD_OUTLINE_URL = "marble-card-outline.jpg"
+
 var app = null;
 var cardData = {
-	image : ""	
+	image : BLANK_CARD_OUTLINE_URL
 };
 
 class App extends Component {
@@ -13,6 +15,7 @@ class App extends Component {
 
 		this.currentCardId = 0
 		this.isLoading = false;
+		this.showClipboardButton = false;
 
 		app = this;
 	}
@@ -88,8 +91,9 @@ class App extends Component {
 
 		console.log("loading..." + cardIdInt)
 		
-		cardData.image = ""
+		cardData.image = BLANK_CARD_OUTLINE_URL
 		app.isLoading = true;
+		app.showClipboardButton = false;
 		app.setState({})
 
 		// create a new XMLHttpRequest
@@ -105,6 +109,7 @@ class App extends Component {
 	    	}
 
 	      	app.isLoading = false;
+	      	app.showClipboardButton = true;
 			app.setState({})
 	    })
 
@@ -119,18 +124,20 @@ class App extends Component {
 		return (
 		    <div className="App">		    	
 		    	<br/>
-		    	<p>This page is for collecting card stats in use with &nbsp;<b>@Wayfinder</b>'s spreadsheet &nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.
+		    	<p>This page is for collecting card stats used by&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.
+		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>
 	        	</p>
 		    	<InputSection app={app}/>
-		    	<br/>
-		        <div className="clipboard-div">
-		        	<button onClick={this.copyCardDataToClipboard}>Copy details to Clipboard</button>
+		    	<br/>		        
+		        <div className="card-div">
+		        	<img class="card-image" src={cardData.image}/>
+		        	<img hidden={!app.isLoading} className="card-loading" src="loading.gif"/>
+	        	</div>
+	        	<br/>
+	        	<div className="clipboard-div">
+		        	<button hidden={!app.showClipboardButton} onClick={this.copyCardDataToClipboard}>Copy details to Clipboard</button>
 		        </div>
 		        <br/>
-
-		        <div className="card-div">
-		        	<img src={cardData.image}/>
-	        	</div>	        	
 		    </div>
 		  );
 	}  

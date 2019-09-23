@@ -27,8 +27,7 @@ class InputSection extends Component {
 	render() {
 		return (
 			<div className="input-section">				
-				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown} placeholder="Card ID or URL"/>
-				<img hidden={!app.isLoading} className="loading-spinner" src="loading.gif"/>
+				<input onChange={this.updateInput} onKeyDown={this.handleKeyDown} placeholder="Card ID or URL"/>				
 			</div>		    	
 	  	);
 	}  
