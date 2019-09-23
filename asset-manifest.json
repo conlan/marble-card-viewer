@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/marble-card-viewer/static/css/main.474256c8.chunk.css",
+    "main.js": "/marble-card-viewer/static/js/main.76ae22f1.chunk.js",
+    "main.js.map": "/marble-card-viewer/static/js/main.76ae22f1.chunk.js.map",
+    "runtime-main.js": "/marble-card-viewer/static/js/runtime-main.4bda6b1d.js",
+    "runtime-main.js.map": "/marble-card-viewer/static/js/runtime-main.4bda6b1d.js.map",
+    "static/js/2.d5f3c43b.chunk.js": "/marble-card-viewer/static/js/2.d5f3c43b.chunk.js",
+    "static/js/2.d5f3c43b.chunk.js.map": "/marble-card-viewer/static/js/2.d5f3c43b.chunk.js.map",
+    "index.html": "/marble-card-viewer/index.html",
+    "precache-manifest.78bfb218ce2fd676b9c0fbad1ed389c7.js": "/marble-card-viewer/precache-manifest.78bfb218ce2fd676b9c0fbad1ed389c7.js",
+    "service-worker.js": "/marble-card-viewer/service-worker.js",
+    "static/css/main.474256c8.chunk.css.map": "/marble-card-viewer/static/css/main.474256c8.chunk.css.map"
+  }
+}
