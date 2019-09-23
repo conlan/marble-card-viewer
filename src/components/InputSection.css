@@ -7,24 +7,12 @@
 }
 
 input {
-	margin-left: 10px;
-  margin-right: 10px;
-
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-
-   width: 195px;
-   height: 25px;
-}
-
-button {
   font-size: 14px;
 
-  width: 200px;
-  height: 30px;
-
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+
+   width: 290px;
+   height: 25px;
 }

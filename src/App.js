@@ -16,6 +16,7 @@ class App extends Component {
 		this.currentCardId = 0
 		this.isLoading = false;
 		this.showClipboardButton = false;
+		this.copyComplete = false
 
 		app = this;
 	}
@@ -35,6 +36,9 @@ class App extends Component {
 		tokens.push("\"" + cardData.card_title_multiline + "\"")
 		tokens.push(cardData.domain_collection.domain_name)
     	app.copyToClipboard(tokens)		
+
+    	app.copyComplete = true;
+    	app.setState({})
 	}
 
 	copyToClipboard(tokens) {
@@ -135,7 +139,8 @@ class App extends Component {
 	        	</div>
 	        	<br/>
 	        	<div className="clipboard-div">
-		        	<button hidden={!app.showClipboardButton} onClick={this.copyCardDataToClipboard}>Copy details to Clipboard</button>
+		        	<button className="clipboard-button" hidden={!app.showClipboardButton} onClick={this.copyCardDataToClipboard}>Copy to Clipboard</button>
+		        	<img hidden={!app.copyComplete} className="copy-complete" src="copy-complete.jpg"/>
 		        </div>
 		        <br/>
 		    </div>

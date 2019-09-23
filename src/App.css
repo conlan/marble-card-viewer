@@ -36,8 +36,32 @@ p {
   padding: 10px;
   color: white;
 }
+
+button {
+  font-size: 14px;
+
+  width: 200px;
+  height: 30px;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+img.hidden {
+  visibility: hidden;
+}
+
 .card-image {
   position: relative;
+}
+
+.clipboard-button {
+  margin-right:10px;
+}
+
+.copy-complete {
+  width:25px;
 }
 
 .card-loading {  
