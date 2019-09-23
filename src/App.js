@@ -128,24 +128,34 @@ class App extends Component {
 		return (
 		    <div className="App">		    	
 		    	<br/>
-		    	<p>This page is for collecting card stats used by&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.
-		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>
-	        	</p>
+		    	<p>Collect card stats for use with&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.</p>
+		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>	        	
 		    	<InputSection app={app}/>
 		    	<br/>		        
 		        <div className="card-div">
-		        	<img class="card-image" src={cardData.image}/>
+		        	<img className="card-image" src={cardData.image}/>
 		        	<img hidden={!app.isLoading} className="card-loading" src="loading.gif"/>
 	        	</div>
 	        	<br/>
 	        	<div className="clipboard-div">
 		        	<button className="clipboard-button" hidden={!app.showClipboardButton} onClick={this.copyCardDataToClipboard}>Copy to Clipboard</button>
-		        	<img hidden={!app.copyComplete} className="copy-complete" src="copy-complete.jpg"/>
+		        	<CopyCompleteButton app={this}/>
+		        	
 		        </div>
 		        <br/>
 		    </div>
 		  );
 	}  
+}
+
+class CopyCompleteButton extends React.Component {
+	render () {
+		if (this.props.app.copyComplete) {
+			return <img className="copy-complete-visible" src="copy-complete.png"/>
+		} else {
+			return <img className="copy-complete-hidden" src="copy-complete.png"/>
+		}
+	}
 }
 
 export default App;

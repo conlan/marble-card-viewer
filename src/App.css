@@ -60,8 +60,13 @@ img.hidden {
   margin-right:10px;
 }
 
-.copy-complete {
+.copy-complete-visible {
   width:25px;
+}
+
+.copy-complete-hidden {
+  width:25px; 
+  visibility: hidden;
 }
 
 .card-loading {  
