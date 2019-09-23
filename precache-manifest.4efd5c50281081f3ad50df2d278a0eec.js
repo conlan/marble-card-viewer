@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "237c1292e6c925c9583f9d7bf9db1ca6",
+    "revision": "1e966f4db3443b59588815444a4a0157",
     "url": "/marble-card-viewer/index.html"
   },
   {

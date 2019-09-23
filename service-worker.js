@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/marble-card-viewer/precache-manifest.78bfb218ce2fd676b9c0fbad1ed389c7.js"
+  "/marble-card-viewer/precache-manifest.4efd5c50281081f3ad50df2d278a0eec.js"
 );
 
 self.addEventListener('message', (event) => {
