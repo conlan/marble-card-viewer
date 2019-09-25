@@ -129,7 +129,7 @@ class App extends Component {
 		return (
 		    <div className="App">		    	
 		    	<br/>
-		    	<p>Collect card stats for use with&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z7G84XtfYHZxHjdIfM4a5jI7XzSGQH14vHMTGBkMEQY/">here</a>.</p>
+		    	<p>Collect card stats for use with&nbsp;<b>@Wayfinder</b>'s spreadsheet&nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1esPbPkaHNrVEKx7f8Y7pv4gS9awBmJknW1HgMRB3bfw/">here</a>.</p>
 		    	<br/>
 		    	<p>Rules for MarbleCards 1vs1 are <a href="https://medium.com/marblecards/rules-for-marblecards-1vs1-card-game-14920bc208d5" target="_blank">here.</a></p>
 		    	<br/>
