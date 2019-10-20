@@ -93,11 +93,12 @@ class App extends Component {
 			return
 		}
 
-		console.log("loading..." + cardIdInt)
+		console.log("loading card: " + cardIdInt)
 		
 		cardData.image = BLANK_CARD_OUTLINE_URL
 		app.isLoading = true;
 		app.showClipboardButton = false;
+		app.copyComplete = false;
 		app.setState({})
 
 		// create a new XMLHttpRequest
@@ -106,7 +107,7 @@ class App extends Component {
     	// get a callback when the server responds
 	    xhr.addEventListener('load', () => {	    	
 	    	// console.log(xhr.responseText)
-	    	
+
 	    	if (xhr.responseText === "null") {
 				alert("No card found for " + cardId)
 	    	} else {
